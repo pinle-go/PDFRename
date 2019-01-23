@@ -59,8 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>/usr/bin/python -c 'import mochi' 2&gt;1 &gt;/dev/null || pip install git+https://github.com/pinle-go/PDFRename.git --user &gt;/dev/null
-/usr/bin/python -m mochi "$@"</string>
+					<string>/usr/bin/python -m mochi "$@"</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -170,8 +169,6 @@
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -188,11 +185,11 @@
 	<key>workflowMetaData</key>
 	<dict>
 		<key>serviceApplicationBundleID</key>
-		<string>com.apple.finder</string>
+		<string></string>
 		<key>serviceApplicationPath</key>
-		<string>/System/Library/CoreServices/Finder.app</string>
+		<string></string>
 		<key>serviceInputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject</string>
+		<string>com.apple.Automator.fileSystemObject.PDF</string>
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>

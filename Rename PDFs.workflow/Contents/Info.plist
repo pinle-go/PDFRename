@@ -8,18 +8,13 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Rename PDF Files by Titles</string>
+				<string>Rename PDFs</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
-			<key>NSRequiredContext</key>
-			<dict>
-				<key>NSApplicationIdentifier</key>
-				<string>com.apple.finder</string>
-			</dict>
 			<key>NSSendFileTypes</key>
 			<array>
-				<string>public.item</string>
+				<string>com.adobe.pdf</string>
 			</array>
 		</dict>
 	</array>
