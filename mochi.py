@@ -34,9 +34,9 @@ def sanitize(title):
     # If the title was picked up from text, it may be too large.
     # Preserve a certain number of words and characters
     words = title.split(" ")
-    title = " ".join(words[0 : config["max_words"]])
+    title = " ".join(words[0: config["max_words"]])
     if len(title) > int(config["max_chars"]):
-        title = title[0 : config["max_chars"]]
+        title = title[0: config["max_chars"]]
 
     # Preserve letters with diacritics
     try:
@@ -114,7 +114,7 @@ def update_largest_text(line, y0, size, largest_text):
     # fallback to text y0 (not even height may be calculated).
     # In this case, we consider the first line of text to be a title.
     if (size == largest_text["size"] == 0) and (
-        y0 - largest_text["y0"] < -float(config["tolerance"])
+            y0 - largest_text["y0"] < -float(config["tolerance"])
     ):
         return largest_text
 
@@ -212,7 +212,7 @@ def extract_figure_text(lt_obj, largest_text):
             elif state == config["char_parsing_state"].INIT_D:
                 # Update distance only if no space is detected
                 if (char_distance > 0) and (
-                    char_current_distance < char_distance * 2.5
+                        char_current_distance < char_distance * 2.5
                 ):
                     char_distance = char_current_distance
                 if char_distance < 0.1:
@@ -220,7 +220,7 @@ def extract_figure_text(lt_obj, largest_text):
                 state = config["char_parsing_state"].INSIDE_WORD
             # If the x-position decreased, then it's a new line
             if (state == config["char_parsing_state"].INSIDE_WORD) and (
-                child.x1 < char_previous_x1
+                    child.x1 < char_previous_x1
             ):
                 log("x-position decreased")
                 line += " "
@@ -228,7 +228,7 @@ def extract_figure_text(lt_obj, largest_text):
                 state = config["char_parsing_state"].INIT_D
             # Large enough distance: it's a space
             elif (state == config["char_parsing_state"].INSIDE_WORD) and (
-                char_current_distance > char_distance * 8.5
+                    char_current_distance > char_distance * 8.5
             ):
                 log("space detected")
                 log("char_current_distance: " + str(char_current_distance))
@@ -238,9 +238,9 @@ def extract_figure_text(lt_obj, largest_text):
             # When larger distance is detected between chars, use it to
             # improve our heuristic
             elif (
-                (state == config["char_parsing_state"].INSIDE_WORD)
-                and (char_current_distance > char_distance)
-                and (char_current_distance < char_distance * 2.5)
+                    (state == config["char_parsing_state"].INSIDE_WORD)
+                    and (char_current_distance > char_distance)
+                    and (char_current_distance < char_distance * 2.5)
             ):
                 char_distance = char_current_distance
                 char_previous_x1 = child.x1
@@ -299,7 +299,7 @@ def title_start(lines):
 
 
 def title_end(lines, start, max_lines=2):
-    for i, line in enumerate(lines[start + 1 : start + max_lines + 1], start + 1):
+    for i, line in enumerate(lines[start + 1: start + max_lines + 1], start + 1):
         if empty_str(line):
             return i
     return start + 1
@@ -352,9 +352,9 @@ def pdftotext_title(fn):
 
 def valid_title(title):
     return (
-        not empty_str(title)
-        and not junk_line(title)
-        and empty_str(os.path.splitext(title)[1])
+            not empty_str(title)
+            and not junk_line(title)
+            and empty_str(os.path.splitext(title)[1])
     )
 
 
@@ -386,13 +386,9 @@ def pdf_title(fn):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("files", nargs="+", help="PDF file paths")
-    parser.add_argument(
-        "--min_chars", type=int, default=6, help="minimal chars of the title"
-    )
-    parser.add_argument(
-        "--max_words", type=int, default=20, help="maximal chars of the title"
-    )
+    parser.add_argument("files", nargs="*", help="PDF file paths")
+    parser.add_argument("--min_chars", type=int, default=6, help="minimal chars of the title")
+    parser.add_argument("--max_words", type=int, default=20, help="maximal chars of the title")
     parser.add_argument("--tolerance", type=float, default=1e-6, help="threshold")
     args = parser.parse_args()
 
@@ -416,3 +412,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    exit(0)
